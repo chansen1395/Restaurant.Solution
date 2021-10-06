@@ -10,7 +10,7 @@ namespace Food.Controllers
   {
     private readonly FoodContext _db;
 
-    public CuisineController(FoodContext db)
+    public CuisinesController(FoodContext db)
     {
       _db = db;
     }
@@ -29,20 +29,20 @@ namespace Food.Controllers
     [HttpPost]
     public ActionResult Create(Cuisine cuisine)
     {
-      _db.Cuisine.Add(cuisine);
+      _db.Cuisines.Add(cuisine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Cuisine thisCuisine = _db.Categories.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      Cuisine thisCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
       return View(thisCuisine);
     }
 
     public ActionResult Edit(int id)
     {
-      var thisCuisine = _db.Categories.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      var thisCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
       return View(thisCuisine);
     }
 
@@ -56,15 +56,15 @@ namespace Food.Controllers
 
     public ActionResult Delete (int id)
     {
-      var thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
-      View(thisCuisine);
+      var thisCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      return View(thisCuisine);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
-      _db.Cuisine.Remove(thisCuisine);
+      var thisCuisine = _db.Cuisines.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      _db.Cuisines.Remove(thisCuisine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

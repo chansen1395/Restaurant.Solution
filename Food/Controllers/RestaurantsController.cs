@@ -16,30 +16,30 @@ namespace Food.Controllers
     }
 
     public ActionResult Index() {
-      List < Restaurant > model = _db.Restaurants.Include(restaurant => restaurant.Cuisine).ToList();
+      List<Restaurant> model = _db.Restaurant_Info.Include(restaurant => restaurant.Cuisine).ToList();
       return View(model);
     }
 
     public ActionResult Create() {
-      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "CuisineName");
       return View();
     }
 
     [HttpPost]
     public ActionResult Create(Restaurant restaurant) {
-      _db.Restaurants.Add(restaurant);
+      _db.Restaurant_Info.Add(restaurant);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details (int id) {
-      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      return View(thisItem);
+      Restaurant thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      return View(thisRestaurant);
     }
 
     public ActionResult Edit (int id) {
-      var thisRestaurant = _db.restaurant.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      ViewBag.CuisineId = new SelectList (_db.Cuisines, "CuisineId", "Name");
+      var thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      ViewBag.CuisineId = new SelectList (_db.Cuisines, "CuisineId", "CuisineName");
       return View(thisRestaurant);
     }
 
@@ -51,17 +51,16 @@ namespace Food.Controllers
     }
 
     public ActionResult Delete(int id) {
-      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      return view (thisRestaurant)
+      var thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      return View(thisRestaurant);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id) {
-      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      _db.Restaurants.Remove(thisRestaurant);
+      var thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      _db.Restaurant_Info.Remove(thisRestaurant);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
   }
 }

@@ -1,4 +1,4 @@
-Build - where restaurants = items, cuisines = categories
+
 
 Add - Dishes to cuisine (Maybe have an ingredient key to search for similar dishes?)
 Style - styling databases to visually represent data?

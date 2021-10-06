@@ -2,10 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Food.Models
 {
-  public class FoodContext : AddDbContext
+  public class FoodContext : DbContext
   {
     public DbSet<Cuisine> Cuisines {get; set;}
-    public DbSet<Restaurant> Restaurants {get; set;}
+    public DbSet<Restaurant> Restaurant_Info {get; set;}
 
     public FoodContext(DbContextOptions options) : base(options) { }
 

@@ -2,10 +2,20 @@
   Layout = "_Layout";
 }
 
-<h1>To Do List Item Details: </h1>
+@model Food.Models.Restaurant
 
-<h2>@Model["CLASS"]</h2>
+<h1>Add a new restaurant </h1>
 
-change pathing below and do other stuff
-<a href='/categories/@Model["category"].Id/items/new'>Add another item</a>
-<a href='/categories'>View all categories</a>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.RestaurantName)
+    @Html.TextBoxFor(model => model.RestaurantName)
+
+    @Html.LabelFor(model => model.Cuisine)
+    @Html.DropDownList("CuisineId")
+
+<input type="submit" value="Add new restaurant" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all restaurants", "Index")</p>

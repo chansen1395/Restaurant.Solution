@@ -2,10 +2,20 @@
   Layout = "_Layout";
 }
 
+@model Food.Models.Restaurant
 
-<h1>Add a new item to @Model.Name</h1>
+<h2>Edit</h2>
 
-<form action="/CLASSNAME/@Model.Id/CLASSNAME" method="post">
-  <input id="CLASSId" name="CLASSId" type="???" value="@Model.Id">
-  <button type='submit'>Add Item</button>
-</form>
+<h4>Edit this Restaurant type: @Html.DisplayFor(model => model.RestaurantName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RestaurantId)
+
+  @Html.LabelFor(model => model.RestaurantName)
+  @Html.EditorFor(model => model.RestaurantName)
+  
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
