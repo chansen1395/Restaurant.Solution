@@ -62,5 +62,12 @@ namespace Food.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public ActionResult Search(string SearchName) 
+    {
+      var thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantName == SearchName)
+      return View(thisRestaurant);
+    }
   }
 }

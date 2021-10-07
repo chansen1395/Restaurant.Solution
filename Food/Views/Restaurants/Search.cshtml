@@ -1,0 +1,10 @@
+@{
+  Layout = "_Layout";
+}
+@model Food.Models.Restaurant
+
+<h2>Search Results: </h2>
+
+@Html.DisplayNameFor(model => model.RestaurantName): @Html.DisplayFor(model => model.RestaurantName)
+
+@Html.ActionLink("Back to List", "Index")

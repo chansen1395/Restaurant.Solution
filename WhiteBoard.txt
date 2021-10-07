@@ -1,7 +1,11 @@
 
 
 Add - Dishes to cuisine (Maybe have an ingredient key to search for similar dishes?)
+Add database for Dishes that links to cuisine, then uses another key? to link to restaurants? (point is to learn database connections and foreign keys)
+
+
 Style - styling databases to visually represent data?
+Learn how to properly add stylesheet to multiple pages
 
 
 *Best Restaurants*
