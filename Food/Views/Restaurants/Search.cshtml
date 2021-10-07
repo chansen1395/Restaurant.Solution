@@ -1,10 +1,25 @@
 @{
   Layout = "_Layout";
 }
-@model Food.Models.Restaurant
+
+@model Food.Models.Restaurant;
+
 
 <h2>Search Results: </h2>
 
-@Html.DisplayNameFor(model => model.RestaurantName): @Html.DisplayFor(model => model.RestaurantName)
 
-@Html.ActionLink("Back to List", "Index")
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.RestaurantName)
+  @Html.TextBoxFor(model => model.RestaurantName)
+
+  <input type="submit" value="Search"/>
+}
+
+
+
+<p>@Html.ActionLink("Back to List", "Index")</p>
+
+
+
+

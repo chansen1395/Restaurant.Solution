@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Food.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System;
 
 namespace Food.Controllers
 {
@@ -63,11 +65,20 @@ namespace Food.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpPost]
-    public ActionResult Search(string SearchName) 
+
+    public ActionResult Search() 
     {
-      var thisRestaurant = _db.Restaurant_Info.FirstOrDefault(restaurant => restaurant.RestaurantName == SearchName)
-      return View(thisRestaurant);
+      
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Search(string RestaurantName) 
+    {
+      string searchName = RestaurantName.ToLower();
+      List<Restaurant> searchResults = _db.Restaurant_Info.Where(restaurant => restaurant.RestaurantName.ToLower().Contains(searchName)).ToList();
+      return View("Index", searchResults);
     }
   }
+
 }

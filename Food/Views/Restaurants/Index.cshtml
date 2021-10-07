@@ -17,40 +17,11 @@
   <li>@Html.ActionLink($"{restaurant.RestaurantName}", "Details", new { id = restaurant.RestaurantId }) | Cuisine Type: @restaurant.Cuisine.CuisineName</li>
 }
 
-@using (Html.BeginForm("Search", "RestaurantsController", FormMethod.Post)){    
-     <p> Title: @Html.TextBox("SearchString") <br />   
-     <input type="submit" value="Filter" /></p> 
-}
 
+
+<!-- <p>@Html.ActionLink("Filter", "Search", new { searchString = $"" })</p> -->
+
+<p>@Html.ActionLink("Search Restaurants", "Search")</p>
 <p>@Html.ActionLink("Add new item", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
 
-public DataTable Test(string connectionString)
-    {
-        DataTable table = null;
-        try
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = @"SELECT ID, UnitType, UnitSN, StatusCode, Priority
-                                    FROM Units
-                                    WHERE UnitSN = @inputTB;";
-
-                cmd.Parameters.Add(new SqlParameter(@"inputTB", inputTB.Text));
-
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                {
-                    table = new DataTable();
-                    adapter.Fill(table);
-                }
-            }
-        }
-        catch(Exception ex)
-        {
-           //handle the caught exception 
-        }
-        return table;
-    }

@@ -3,6 +3,14 @@ using Food.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+// using System;
+// using System.Web;
+// using System.Web.Mvc;
+// using System.ComponentModel.DataAnnotations;
+// using System.Data.Entity;
+
+
 
 namespace Food.Controllers
 {
@@ -14,6 +22,27 @@ namespace Food.Controllers
     {
       _db = db;
     }
+
+//*************************************************
+    // public ActionResult Index(string searchString) 
+    // {           
+    //   var cuisines = from m in _db.Cuisines 
+    //     select m; 
+  
+    //   if (!String.IsNullOrEmpty(searchString)) 
+    //   { 
+    //       cuisines = cuisines.Where(s => s.CuisineName.Contains(searchString)); 
+    //   } 
+
+    //   return View(cuisines); 
+    // }
+
+    // [HttpPost] 
+    // public string Index(FormCollection fc, string searchString) 
+    // { 
+    //   return "<h3> From [HttpPost]Index: " + searchString + "</h3>"; 
+    // }
+//*************************************************
 
     public ActionResult Index()
     {
